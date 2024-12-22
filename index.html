@@ -45,16 +45,31 @@
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0" id="home">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <!-- <a href="" class="navbar-brand p-0">
+                    <style>
+                        .logo {
+                            width: 100px; /* Adjust this value for desired size */
+                            height: 100px; /* Maintain aspect ratio */
+                            /* max-width: 100%; Ensure responsiveness */
+                        }
+                    </style>
+                    <img src="img/logo.png" alt="Logo" class="logo">
+                </a> -->
                 <a href="" class="navbar-brand p-0">
                     <style>
                         .logo {
-                            width: 300px; /* Adjust this value for desired size */
-                            height: auto; /* Maintain aspect ratio */
-                            max-width: 100%; /* Ensure responsiveness */
+                            transform: scale(3.0); /* Enlarges the image by 50% */
+                            transform-origin: center; /* Ensures scaling happens from the center */
+                            max-width: none; /* Prevents restrictions on maximum width */
+                            height: auto; /* Maintains aspect ratio */
+                            padding: 10px; /* Adjust this value for desired padding */
+
                         }
                     </style>
-                    <img src="img/Logo_processed.png" alt="Logo" class="logo">
+                    <img src="img/logo.png" alt="Logo" class="logo">
                 </a>
+                
+                
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -68,7 +83,7 @@
                         <a href="https://peak-routine.productroad.com/board/ideas/" class="nav-item nav-link" target="_blank" rel="noopener noreferrer">Feature Request</a>
                         <!-- <a href="#pricing" class="nav-item nav-link">Pricing</a>
                         <a href="#review" class="nav-item nav-link">Review</a> -->
-                        <a href="#contact" class="nav-item nav-link">Contact</a>
+                        <a href="#contactForm" class="nav-item nav-link">Contact</a>
                     </div>
                     <!-- <a href="" class="btn btn-primary-gradient rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Start Free Trial</a> -->
                 </div>
@@ -107,7 +122,7 @@
                         <h5 class="text-primary-gradient fw-medium">About App</h5>
                         <h1 class="mb-4">#1 Your Ultimate Health Companion App</h1>
                         <p class="mb-4">Your Personalized Path to Total Wellness</p>
-                        <div class="row g-4 mb-4">
+                        <!-- <div class="row g-4 mb-4">
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="d-flex">
                                     <i class="fa fa-cogs fa-2x text-primary-gradient flex-shrink-0 mt-1"></i>
@@ -127,7 +142,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="" class="btn btn-primary-gradient py-sm-3 px-4 px-sm-5 rounded-pill mt-3">Read More</a>
+                        <a href="" class="btn btn-primary-gradient py-sm-3 px-4 px-sm-5 rounded-pill mt-3">Read More</a> -->
                     </div>
                     <div class="col-lg-6">
                         <img class="img-fluid wow fadeInUp" data-wow-delay="0.5s" src="img/overall.png">
@@ -253,7 +268,7 @@
                             <h5 class="mt-4 mb-3">Install the App</h5>
                             <p class="mb-0">Take the first step toward achieving your health and fitness goals! Download the app today and unlock a world of personalized fitness tracking, insightful health tips, and an easy-to-use interface that keeps you motivated.  
                                 <br><br>
-                                <strong><span style="color: black;">Join thousands of users already transforming their lives. Install now and take charge of your fitness journey!</span></strong>
+                                <span style="color: black;">Join thousands of users already transforming their lives. Install now and take charge of your fitness journey!</span>
                             </p>
                         </div>
                         
@@ -265,7 +280,7 @@
                             </div>
                             <h5 class="mt-4 mb-3">Setup Your Profile</h5>
                             <p class="mb-0">Create a personalized experience by setting up your profile and syncing your health data. To get started, simply provide permission to access your Apple Health data. This allows the app to gather key health metrics such as steps, activity, sleep, and more, enabling us to offer tailored insights and recommendations that align with your fitness goals.</p>
-                            <p><strong><span style="color: black;"><br><br>Your data is secure and used solely to enhance your fitness experience. Set up your profile now and take the first step towards a healthier you!</span></strong></p>
+                            <p><span style="color: black;"><br><br>Your data is secure and used solely to enhance your fitness experience. Set up your profile now and take the first step towards a healthier you!</span></p>
                         </div>
                         
                     </div>
@@ -610,154 +625,228 @@
         </div> -->
 
         <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-        }
-        .contact-container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .contact-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .form-group textarea {
-            height: 120px;
-            resize: none;
-        }
-        .btn-submit {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .btn-submit:hover {
-            background-color: #0056b3;
-        }
-        .contact-info {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .contact-info p {
-            margin: 5px 0;
-        }
-        .contact-info a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-
-<div class="contact-container">
-    <h2>Contact Us</h2>
-    <form action="/submit-contact-form" method="POST">
-        <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0", id="contactForm">
+            <title>Contact Us</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    background-color: #f8f9fa;
+                }
+                .contact-container {
+                    max-width: 800px;
+                    margin: 50px auto;
+                    background: #fff;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+                .contact-container h2 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    color: #333;
+                }
+                .form-group {
+                    margin-bottom: 15px;
+                }
+                .form-group label {
+                    display: block;
+                    margin-bottom: 5px;
+                    font-weight: bold;
+                }
+                .form-group input, .form-group textarea {
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    font-size: 16px;
+                }
+                .form-group input.invalid, .form-group textarea.invalid {
+                    border-color: red;
+                }
+                .form-group textarea {
+                    height: 120px;
+                    resize: none;
+                }
+                .btn-submit {
+                    display: block;
+                    width: 100%;
+                    padding: 10px;
+                    background-color: #007bff;
+                    color: #fff;
+                    font-size: 18px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                }
+                .btn-submit:hover {
+                    background-color: #0056b3;
+                }
+                .error-message {
+                    color: red;
+                    font-size: 14px;
+                    margin-top: 5px;
+                    display: none;
+                }
+                .contact-info {
+                    text-align: center;
+                    margin-top: 30px;
+                }
+                .response-message {
+                    text-align: center;
+                    margin-top: 20px;
+                    font-size: 16px;
+                }
+            </style>
+            <script>
+                function validateField(field, errorMessageId, validator) {
+                    const value = field.value.trim();
+                    const errorMessage = document.getElementById(errorMessageId);
+        
+                    if (!validator(value)) {
+                        field.classList.add('invalid');
+                        errorMessage.style.display = 'block';
+                        return false;
+                    } else {
+                        field.classList.remove('invalid');
+                        errorMessage.style.display = 'none';
+                        return true;
+                    }
+                }
+        
+                function validateForm(event) {
+                    event.preventDefault(); // Prevent form submission
+        
+                    const nameField = document.getElementById('name');
+                    const emailField = document.getElementById('email');
+                    const subjectField = document.getElementById('subject');
+                    const messageField = document.getElementById('message');
+        
+                    const isNameValid = validateField(nameField, 'name-error', value => value.length >= 2);
+                    const isEmailValid = validateField(emailField, 'email-error', value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
+                    const isSubjectValid = validateField(subjectField, 'subject-error', value => value.length >= 3);
+                    const isMessageValid = validateField(messageField, 'message-error', value => value.length >= 5);
+        
+                    if (isNameValid && isEmailValid && isSubjectValid && isMessageValid) {
+                        submitForm();
+                    }
+                }
+        
+                async function submitForm() {
+                    const form = document.getElementById('contactForm');
+                    const name = document.getElementById('name').value.trim();
+                    const email = document.getElementById('email').value.trim();
+                    const subject = document.getElementById('subject').value.trim();
+                    const message = document.getElementById('message').value.trim();
+        
+                    const formData = { name, email, subject, message };
+        
+                    try {
+                        const response = await fetch('http://192.168.254.17:8083/app/website/contactUs', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(formData),
+                        });
+        
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+        
+                        document.getElementById('response-message').innerText = 'Thank you! Your message has been sent.';
+                        document.getElementById('response-message').style.color = 'green';
+                        
+                    } catch (error) {
+                        document.getElementById('response-message').innerText = `Error: ${error.message}`;
+                        document.getElementById('response-message').style.color = 'red';
+                    }
+                    
+                }
+            </script>
+        </head>
+        <body>
+        
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <form id="contactForm" onsubmit="validateForm(event)">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    <div id="name-error" class="error-message">Name must be at least 2 characters long.</div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <div id="email-error" class="error-message">Please enter a valid email address.</div>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="Enter the subject" required>
+                    <div id="subject-error" class="error-message">Subject must be at least 3 characters long.</div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+                    <div id="message-error" class="error-message">Message must be at least 5 characters long.</div>
+                </div>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        
+            <p id="response-message" class="response-message"></p>
         </div>
-        <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-        </div>
-        <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="Enter the subject" required>
-        </div>
-        <div class="form-group">
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
-        </div>
-        <div class="col-12 text-center">
-            <button class="btn btn-primary-gradient rounded-pill py-3 px-5" type="submit">Send Message</button>
-        </div>
-        </form>
-
-    <!-- <div class="contact-info">
-        <p>Have more questions? Reach us directly:</p>
-        <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:support@example.com">support@example.com</a></p>
-        <p><i class="fas fa-map-marker-alt"></i> 1234 Example St, City, Country</p>
-    </div> -->
-</div>
-
-</body>
-</html>
+        
+        </body>
+        </html>
+        
+    
 
         <!-- Contact End -->
         
 
         <!-- Footer Start -->
+        <div class="container-xxl py-5" id="about">
+
         <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5 px-lg-5">
                 <div class="row g-5">
-                    <div class="col-md-6 col-lg-3">
-                        <h4 class="text-white mb-4">Address</h4>
-                        <p><i class="fa fa-map-marker-alt me-3"></i>Washington, USA</p>
+                    <!-- <div class="col-md-6 col-lg-3"> -->
+                        <!-- <h4 class="text-white mb-4">Address</h4> -->
+                        <!-- <p><i class="fa fa-map-marker-alt me-3"></i>Washington, USA</p> -->
                         <!-- <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
                         <p><i class="fa fa-envelope me-3"></i>info@example.com</p> -->
-                        <div class="d-flex pt-2">
+                        <!-- <div class="d-flex pt-2"> -->
                             <!-- <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a> -->
-                        </div>
-                    </div>
+                        <!-- </div> -->
+                    <!-- </div> -->
                     <div class="col-md-6 col-lg-3">
                         <h4 class="text-white mb-4">Quick Link</h4>
                         <a class="btn btn-link" href="">About Us</a>
                         <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                        <a class="btn btn-link" href="">Career</a>
+                        <a href="https://peak-routine.productroad.com/roadmap/peak-routine-ios-app" class="btn btn-link">Product Roadmap</a>
+                        <a href="https://peak-routine.productroad.com/board/ideas/" class="btn btn-link">Feature Request</a>
+                   
+                        <!-- <a class="btn btn-link" href="">Privacy Policy</a> -->
+                        <!-- <a class="btn btn-link" href="">Terms & Condition</a> -->
+                        <!-- <a class="btn btn-link" href="">Career</a> -->
                     </div>
-                    <div class="col-md-6 col-lg-3">
+                    <!-- <div class="col-md-6 col-lg-3">
                         <h4 class="text-white mb-4">Popular Link</h4>
                         <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                        <a class="btn btn-link" href="">Career</a>
-                    </div>
+                        <a class="btn btn-link" href="">Contact Us</a> -->
+                        <!-- <a class="btn btn-link" href="">Privacy Policy</a> -->
+                        <!-- <a class="btn btn-link" href="">Terms & Condition</a> -->
+                        <!-- <a class="btn btn-link" href="">Career</a> -->
+                    <!-- </div> -->
                     <!-- <div class="col-md-6 col-lg-3">
                         <h4 class="text-white mb-4">Newsletter</h4>
                         <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu</p>
@@ -772,7 +861,7 @@
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
+                            &copy; <a class="border-bottom" href="#">Peak Routine</a>, All Right Reserved. 
 							
 							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
 							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
