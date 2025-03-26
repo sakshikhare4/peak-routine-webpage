@@ -1112,12 +1112,47 @@
       border-radius: 2px 0 0 2px;
     }
 
+    /* Updated nav dots styling */
     .nav-dots {
       display: flex;
       justify-content: center;
       gap: 10px;
       margin-top: 20px;
       margin-bottom: 20px;
+    }
+
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(28, 133, 232, 0.3);
+      /* Light blue color using primary variable */
+      border: 1px solid rgba(28, 133, 232, 0.5);
+      /* Border for better visibility */
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-dot.active {
+      background-color: var(--primary);
+      /* Your primary blue color */
+      transform: scale(1.2);
+      border: 1px solid var(--primary-dark);
+      /* Darker border on active state */
+    }
+
+    /* For dots in the hero section with blue background */
+    .hero-header .nav-dots .nav-dot {
+      background-color: rgba(255, 255, 255, 0.3);
+      /* Translucent white */
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      /* White border */
+    }
+
+    .hero-header .nav-dots .nav-dot.active {
+      background-color: #ffffff;
+      /* Solid white for active state */
+      border: 1px solid #ffffff;
     }
 
     /* Add a wrapper to contain both the phone and navigation dots */
@@ -1154,6 +1189,15 @@
       animation: shadowPulse 8s ease-in-out infinite;
     }
 
+    @media (max-width: 576px) {
+      .hero-buttons .btn {
+        margin-bottom: 10px;
+        margin-right: 0 !important;
+        display: block;
+        width: 100%;
+      }
+    }
+
     @keyframes shadowPulse {
       0% {
         transform: rotateX(60deg) translateX(-40px) scale(1);
@@ -1179,6 +1223,72 @@
         transform: rotateX(60deg) translateX(-40px) scale(1);
         opacity: 0.3;
       }
+    }
+
+    /* Waitlist Section Styling */
+    .waitlist-container {
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .waitlist-container:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .waitlist-container .form-control {
+      padding: 12px 15px;
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      font-family: var(--body-font);
+      transition: all 0.3s ease;
+    }
+
+    .waitlist-container .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(28, 133, 232, 0.2);
+      outline: none;
+    }
+
+    .waitlist-container .form-check-input:checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .waitlist-counter {
+      position: relative;
+      padding-top: 20px;
+    }
+
+    .waitlist-counter:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background-color: var(--gray-300);
+    }
+
+    .counter-number {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    #waitlist-response.success {
+      color: var(--secondary);
+      padding: 15px;
+      border-radius: 8px;
+      background-color: rgba(56, 193, 114, 0.1);
+    }
+
+    #waitlist-response.error {
+      color: #E53E3E;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: rgba(229, 62, 62, 0.1);
     }
   </style>
 </head>
@@ -1211,6 +1321,8 @@
               class="nav-item nav-link">About</a>
             <a href="javascript:void(0)" onclick="document.getElementById('feature').scrollIntoView()"
               class="nav-item nav-link">Features</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('waitlist-section').scrollIntoView()"
+              class="nav-item nav-link">Waitlist</a>
             <a href="https://peak-routine.productroad.com/roadmap/peak-routine-ios-app" class="nav-item nav-link"
               target="_blank" rel="noopener noreferrer">Product Roadmap</a>
             <a href="https://peak-routine.productroad.com/board/ideas/" class="nav-item nav-link" target="_blank"
@@ -1232,12 +1344,19 @@
               <p class="text-white pb-3 animated slideInDown">Manage stress, anxiety, and pre-diabetes with personalized
                 routines powered by your own data. PeakRoutine connects your daily habits to your well-being and helps
                 you build routines that stick.</p>
-              <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView()"
-                class="btn btn-primary-gradient py-sm-3 px-4 px-sm-5 rounded-pill me-3 animated slideInLeft">Read
-                More</a>
-              <a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView()"
-                class="btn btn-secondary-gradient py-sm-3 px-4 px-sm-5 rounded-pill animated slideInRight">Contact
-                Us</a>
+
+              <!-- Updated hero buttons with consistent spacing -->
+              <div class="hero-buttons">
+                <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView()"
+                  class="btn btn-primary-gradient py-sm-3 px-4 px-sm-5 rounded-pill me-3 animated slideInLeft">Read
+                  More</a>
+                <a href="javascript:void(0)" onclick="document.getElementById('waitlist-section').scrollIntoView()"
+                  class="btn btn-light py-sm-3 px-4 px-sm-5 rounded-pill me-3 animated slideInRight">
+                  <i class="fa fa-user-plus me-2"></i>Join Waitlist</a>
+                <a href="javascript:void(0)" onclick="document.getElementById('contact').scrollIntoView()"
+                  class="btn btn-secondary-gradient py-sm-3 px-4 px-sm-5 rounded-pill animated slideInRight">Contact
+                  Us</a>
+              </div>
             </div>
             <div class="col-lg-4 d-flex justify-content-center justify-content-lg-end wow fadeInUp" data-wow-delay="0">
               <div class="phone-wrapper">
@@ -1245,16 +1364,11 @@
                   <div class="phone-edge"></div>
                   <div class="phone">
                     <div class="phone-screen">
-                      <img class="screenshot" id="phoneContainer-screenshot1" src="img/screen1.png"
-                        alt="Dashboard 1">
-                      <img class="screenshot hidden" id="phoneContainer-screenshot2" src="img/screen2.png"
-                        alt="Dashboard 2">
-                      <img class="screenshot hidden" id="phoneContainer-screenshot3" src="img/screen3.png"
-                        alt="Dashboard 3">
-                      <img class="screenshot hidden" id="phoneContainer-screenshot4" src="img/screen4.png"
-                        alt="Dashboard 4">
-                      <img class="screenshot hidden" id="phoneContainer-screenshot5" src="img/screen5.png"
-                        alt="Dashboard 5">
+                      <img class="screenshot" id="phoneContainer-screenshot1" src="img/screen1.png" alt="Dashboard 1">
+                      <img class="screenshot hidden" id="phoneContainer-screenshot2" src="img/screen2.png" alt="Dashboard 2">
+                      <img class="screenshot hidden" id="phoneContainer-screenshot3" src="img/screen3.png" alt="Dashboard 3">
+                      <img class="screenshot hidden" id="phoneContainer-screenshot4" src="img/screen4.png" alt="Dashboard 4">
+                      <img class="screenshot hidden" id="phoneContainer-screenshot5" src="img/screen5.png" alt="Dashboard 5">
                     </div>
                     <div class="phone-notch"></div>
                     <div class="button-container"></div>
@@ -1462,16 +1576,11 @@
                 <div class="phone-edge"></div>
                 <div class="phone">
                   <div class="phone-screen">
-                    <img class="screenshot" id="phoneContainer2-screenshot1" src="img/Dashboard1.jpeg"
-                      alt="Dashboard 1">
-                    <img class="screenshot hidden" id="phoneContainer2-screenshot2" src="img/Dashboard2.jpeg"
-                      alt="Dashboard 2">
-                    <img class="screenshot hidden" id="phoneContainer2-screenshot3" src="img/Dashboard3.jpeg"
-                      alt="Dashboard 3">
-                    <img class="screenshot hidden" id="phoneContainer2-screenshot4" src="img/Dashboard4.jpeg"
-                      alt="Dashboard 4">
-                    <img class="screenshot hidden" id="phoneContainer2-screenshot5" src="img/Dashboard5.jpeg"
-                      alt="Dashboard 5">
+                    <img class="screenshot" id="phoneContainer2-screenshot1" src="img/Dashboard1.jpeg" alt="Dashboard 1">
+                    <img class="screenshot hidden" id="phoneContainer2-screenshot2" src="img/Dashboard2.jpeg" alt="Dashboard 2">
+                    <img class="screenshot hidden" id="phoneContainer2-screenshot3" src="img/Dashboard3.jpeg" alt="Dashboard 3">
+                    <img class="screenshot hidden" id="phoneContainer2-screenshot4" src="img/Dashboard4.jpeg" alt="Dashboard 4">
+                    <img class="screenshot hidden" id="phoneContainer2-screenshot5" src="img/Dashboard5.jpeg" alt="Dashboard 5">
                   </div>
                   <div class="phone-notch"></div>
                   <div class="button-container"></div>
@@ -1737,96 +1846,169 @@
         </div>
 
       </div>
-    <!-- Contact Form Start -->
-    <div class="container-xxl py-5" id="contact">
-      <div class="container py-5 px-lg-5">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-          <h5 class="text-primary-gradient fw-medium">Contact Us</h5>
-          <h1 class="mb-5">Get In Touch!</h1>
-        </div>
 
-        <div class="contact-container">
-          <form id="contactForm" onsubmit="validateForm(event)">
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter your name" required>
-              <div id="name-error" class="error-message">Name must be at least 2 characters long.</div>
-            </div>
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email" required>
-              <div id="email-error" class="error-message">Please enter a valid email address.</div>
-            </div>
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="Enter the subject" required>
-              <div id="subject-error" class="error-message">Subject must be at least 3 characters long.</div>
-            </div>
-            <div class="form-group">
-              <label for="message">Your Message</label>
-              <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
-              <div id="message-error" class="error-message">Message must be at least 5 characters long.</div>
-            </div>
-            <button type="submit" class="btn-submit">Send Message</button>
-          </form>
-          <p id="response-message" class="response-message"></p>
-        </div>
-      </div>
-    </div>
-    <!-- Contact Form End -->
+      <!-- Waitlist Section Start -->
+      <div class="container-xxl py-5 bg-light" id="waitlist-section">
+        <div class="container py-5 px-lg-5">
+          <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h5 class="text-primary-gradient fw-medium">Join Our Waitlist</h5>
+            <h1 class="mb-4">Be Among The First To Experience PeakRoutine</h1>
+            <p class="mb-5">Sign up for early access and be notified when new features are released. <br> Join our
+              community of health enthusiasts and get exclusive updates!</p>
+          </div>
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
-      <div class="container py-5 px-lg-5">
-        <div class="row g-5">
-          <div class="col-md-6 col-lg-3">
-            <h4 class="text-white mb-4">Address</h4>
-            <p><i class="fa fa-map-marker-alt me-3"></i>Seattle, Washington, USA</p>
-            <p><i class="fa fa-envelope me-3"></i>info@peakroutine.com</p>
-            <div class="d-flex pt-2">
-              <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-twitter"></i></a>
-              <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-facebook-f"></i></a>
-              <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
-              <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/company/peakroutine/"><i
-                  class="fab fa-linkedin-in"></i></a>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <h4 class="text-white mb-4">Quick Links</h4>
-            <a class="btn btn-link" href="javascript:void(0)"
-              onclick="document.getElementById('about').scrollIntoView()">About Us</a>
-            <a class="btn btn-link" href="javascript:void(0)"
-              onclick="document.getElementById('contact').scrollIntoView()">Contact Us</a>
-            <a href="https://peak-routine.productroad.com/roadmap/peak-routine-ios-app" class="btn btn-link">Product
-              Roadmap</a>
-            <a href="https://peak-routine.productroad.com/board/ideas/" class="btn btn-link">Feature Request</a>
-          </div>
-        </div>
-      </div>
-      <div class="container px-lg-5">
-        <div class="copyright">
-          <div class="row">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-              &copy; <a class="border-bottom" href="#">Peak Routine</a>, All Rights Reserved.
-              Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-              <div class="footer-menu">
-                <a href="javascript:void(0)" onclick="document.getElementById('home').scrollIntoView()">Home</a>
-                <a href="#">Cookies</a>
-                <a href="#">Help</a>
-                <a href="#">FAQs</a>
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="waitlist-container bg-white p-5 rounded-4 shadow-sm">
+                <form id="waitlistForm" onsubmit="submitWaitlist(event)">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="waitlist-name">Your Name</label>
+                        <input type="text" class="form-control" id="waitlist-name" placeholder="Enter your name"
+                          required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="waitlist-email">Your Email</label>
+                        <input type="email" class="form-control" id="waitlist-email" placeholder="Enter your email"
+                          required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label for="waitlist-reason">What interests you most about PeakRoutine?</label>
+                        <select class="form-control" id="waitlist-reason">
+                          <option value="">-- Select an option --</option>
+                          <option value="Sleep tracking">Sleep tracking and insights</option>
+                          <option value="Mood tracking">Mood tracking features</option>
+                          <option value="Stress management">Stress management tools</option>
+                          <option value="AI insights">AI personalized insights</option>
+                          <option value="Habit building">Building sustainable habits</option>
+                          <option value="Health data integration">Health data integration</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="waitlist-updates" checked>
+                        <label class="form-check-label" for="waitlist-updates">
+                          I'd like to receive product updates and news via email
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-12 text-center mt-4">
+                      <button type="submit" class="btn btn-primary-gradient py-3 px-5 rounded-pill">
+                        <i class="fa fa-paper-plane me-2"></i>Join Waitlist
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <div id="waitlist-response" class="text-center mt-4" style="display: none;"></div>
+
+                <!-- Waitlist counter -->
+                <div class="waitlist-counter text-center mt-5">
+                  <div class="counter-number text-primary-gradient fw-bold mb-2" id="waitlist-count">1,248</div>
+                  <p class="text-muted mb-0">people have already joined the waitlist</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Footer End -->
+      <!-- Waitlist Section End -->
+      <!-- Contact Form Start -->
+      <div class="container-xxl py-5" id="contact">
+        <div class="container py-5 px-lg-5">
+          <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h5 class="text-primary-gradient fw-medium">Contact Us</h5>
+            <h1 class="mb-5">Get In Touch!</h1>
+          </div>
 
-    <!-- Back to Top -->
-    <a href="javascript:void(0)" onclick="window.scrollTo(0,0)" class="btn btn-lg btn-lg-square back-to-top pt-2"><i
-        class="bi bi-arrow-up text-white"></i></a>
+          <div class="contact-container">
+            <form id="contactForm" onsubmit="validateForm(event)">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                <div id="name-error" class="error-message">Name must be at least 2 characters long.</div>
+              </div>
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <div id="email-error" class="error-message">Please enter a valid email address.</div>
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Enter the subject" required>
+                <div id="subject-error" class="error-message">Subject must be at least 3 characters long.</div>
+              </div>
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+                <div id="message-error" class="error-message">Message must be at least 5 characters long.</div>
+              </div>
+              <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+            <p id="response-message" class="response-message"></p>
+          </div>
+        </div>
+      </div>
+      <!-- Contact Form End -->
+
+      <!-- Footer Start -->
+      <div class="container-fluid bg-primary text-light footer wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5 px-lg-5">
+          <div class="row g-5">
+            <div class="col-md-6 col-lg-3">
+              <h4 class="text-white mb-4">Address</h4>
+              <p><i class="fa fa-map-marker-alt me-3"></i>Seattle, Washington, USA</p>
+              <p><i class="fa fa-envelope me-3"></i>info@peakroutine.com</p>
+              <div class="d-flex pt-2">
+                <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com/company/peakroutine/"><i
+                    class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <h4 class="text-white mb-4">Quick Links</h4>
+              <a class="btn btn-link" href="javascript:void(0)"
+                onclick="document.getElementById('about').scrollIntoView()">About Us</a>
+              <a class="btn btn-link" href="javascript:void(0)"
+                onclick="document.getElementById('contact').scrollIntoView()">Contact Us</a>
+              <a href="https://peak-routine.productroad.com/roadmap/peak-routine-ios-app" class="btn btn-link">Product
+                Roadmap</a>
+              <a href="https://peak-routine.productroad.com/board/ideas/" class="btn btn-link">Feature Request</a>
+            </div>
+          </div>
+        </div>
+        <div class="container px-lg-5">
+          <div class="copyright">
+            <div class="row">
+              <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                &copy; <a class="border-bottom" href="#">Peak Routine</a>, All Rights Reserved.
+                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+              </div>
+              <div class="col-md-6 text-center text-md-end">
+                <div class="footer-menu">
+                  <a href="javascript:void(0)" onclick="document.getElementById('home').scrollIntoView()">Home</a>
+                  <a href="#">Cookies</a>
+                  <a href="#">Help</a>
+                  <a href="#">FAQs</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer End -->
+
+      <!-- Back to Top -->
+      <a href="javascript:void(0)" onclick="window.scrollTo(0,0)" class="btn btn-lg btn-lg-square back-to-top pt-2"><i
+          class="bi bi-arrow-up text-white"></i></a>
   </div>
 
   <!-- JavaScript Libraries -->
@@ -2092,6 +2274,106 @@
         }
       });
     });
+
+    // Waitlist form handler
+    function submitWaitlist(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('waitlist-name').value.trim();
+      const email = document.getElementById('waitlist-email').value.trim();
+      const reason = document.getElementById('waitlist-reason').value;
+      const wantsUpdates = document.getElementById('waitlist-updates').checked;
+
+      const waitlistData = { name, email, reason, wantsUpdates };
+
+      // Show loading state
+      const submitButton = event.target.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.innerHTML;
+      submitButton.innerHTML = '<i class="fa fa-spinner fa-spin me-2"></i>Processing...';
+      submitButton.disabled = true;
+
+      // Here you would normally send data to your server
+      // Replace with your actual API endpoint
+      setTimeout(() => {
+        // This simulates an API call - replace with actual fetch or AJAX call
+        try {
+          // Simulating successful submission
+          const responseDiv = document.getElementById('waitlist-response');
+          responseDiv.innerHTML = `
+        <div class="success-icon mb-3">
+          <i class="fa fa-check-circle fa-3x text-success"></i>
+        </div>
+        <h4>Thank you for joining our waitlist!</h4>
+        <p>We'll keep you updated on our launch and new features.</p>
+      `;
+          responseDiv.className = 'success';
+          responseDiv.style.display = 'block';
+
+          // Hide the form
+          document.getElementById('waitlistForm').style.display = 'none';
+
+          // Increment counter for visual effect
+          const counterElement = document.getElementById('waitlist-count');
+          const currentCount = parseInt(counterElement.innerText.replace(/,/g, ''));
+          counterElement.innerText = (currentCount + 1).toLocaleString();
+
+        } catch (error) {
+          // Handle error
+          const responseDiv = document.getElementById('waitlist-response');
+          responseDiv.innerHTML = `
+        <div class="error-icon mb-3">
+          <i class="fa fa-exclamation-circle fa-3x"></i>
+        </div>
+        <h4>Oops! Something went wrong</h4>
+        <p>Please try again or contact us directly.</p>
+      `;
+          responseDiv.className = 'error';
+          responseDiv.style.display = 'block';
+
+          // Reset button
+          submitButton.innerHTML = originalButtonText;
+          submitButton.disabled = false;
+        }
+      }, 1500); // Simulated delay to show loading state
+
+      // For production, use something like this:
+      /*
+      fetch('https://your-api-endpoint.com/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(waitlistData),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Handle success
+        const responseDiv = document.getElementById('waitlist-response');
+        responseDiv.innerHTML = `<h4>Thank you for joining our waitlist!</h4><p>We'll keep you updated on our launch.</p>`;
+        responseDiv.className = 'success';
+        responseDiv.style.display = 'block';
+        
+        // Hide the form
+        document.getElementById('waitlistForm').style.display = 'none';
+      })
+      .catch(error => {
+        // Handle error
+        const responseDiv = document.getElementById('waitlist-response');
+        responseDiv.innerHTML = `<h4>Oops! Something went wrong</h4><p>Please try again later.</p>`;
+        responseDiv.className = 'error';
+        responseDiv.style.display = 'block';
+        
+        // Reset button
+        submitButton.innerHTML = originalButtonText;
+        submitButton.disabled = false;
+      });
+      */
+    }
 
     // Initialize all screenshots when page loads
     window.onload = function () {
