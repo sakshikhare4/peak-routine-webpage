@@ -1034,6 +1034,7 @@
         .hero-header {
             position: relative;
             overflow: hidden;
+            padding-top: 5rem;
         }
 
         .hero-header:before {
@@ -1948,6 +1949,117 @@
             display: block !important;
         }
 
+        .hero-container {
+            position: relative;
+            height: 700px;
+            overflow: visible;
+            /* Changed from hidden to visible to allow images to be seen */
+            background: transparent;
+            margin-bottom: 200px;
+            z-index: 1;
+        }
+
+        .hero-image {
+            position: absolute;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            z-index: 2;
+            opacity: 0;
+            /* Start invisible */
+            display: block !important;
+            /* Force display */
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Improved floating animations with variable timing */
+        @keyframes float1 {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes float2 {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float3 {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        /* No animation initially - will be added via JavaScript after appearance */
+        .float-animation-1,
+        .float-animation-2,
+        .float-animation-3 {
+            animation: none;
+        }
+
+        /* Make sure images have high enough z-index when hovered */
+        .hero-image:hover {
+            transform: scale(1.05) !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        /* Responsive adjustments for scattered layout */
+        @media (max-width: 992px) {
+            .hero-container {
+                height: 450px;
+            }
+
+            .hero-image {
+                width: 22% !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                height: 400px;
+            }
+
+            .hero-image {
+                width: 25% !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-container {
+                height: 300px;
+            }
+
+            .hero-image {
+                width: 30% !important;
+            }
+
+            /* Show only 4 images on very small screens */
+            .hero-image:nth-last-child(1),
+            .hero-image:nth-last-child(2) {
+                display: none;
+            }
+        }
+
         /* Additional JavaScript to handle the scroll event */
     </style>
 
@@ -2008,8 +2120,8 @@
                     <div class="navbar-nav mx-auto py-0">
                         <a href="javascript:void(0)" onclick="document.getElementById('home').scrollIntoView()"
                             class="nav-item nav-link active">Home</a>
-                        <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView()"
-                            class="nav-item nav-link">About</a>
+                        <!-- <a href="javascript:void(0)" onclick="document.getElementById('about').scrollIntoView()"
+                            class="nav-item nav-link">About</a> -->
                         <a href="javascript:void(0)" onclick="document.getElementById('feature').scrollIntoView()"
                             class="nav-item nav-link">Features</a>
                         <a href="javascript:void(0)"
@@ -2027,37 +2139,55 @@
 
             <div class="container-xxl bg-primary hero-header">
                 <div class="container px-lg-5">
-                    <!-- Banner image standalone at the top of hero section with increased size -->
-                    <div class="row mb-5 pt-4">
-                        <div class="col-12 d-flex justify-content-center align-items-center wow fadeInUp"
-                            data-wow-delay="0.3s">
-                            <img class="img-fluid wow fadeInUp rounded-3" data-wow-delay="0.5s" src="img/banner.png"
-                                alt="Health companion app"
-                                style="width: 100%; max-width: 1200px; box-shadow: 0 15px 30px rgba(0,0,0,0.2);">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Hero Section with Scattered Animated Images - increased size -->
+                            <div class="hero-container wow fadeInUp" data-wow-delay="0.2s">
+                                <!-- App Screenshots with staggered fade-in animations -->
+                                <img src="img/personalized_plan.jpeg" alt="Personalized Recommendations"
+                                    class="hero-image float-animation-1 wow fadeInUp" data-wow-delay="0.4s"
+                                    style="width: 22%; top: 15%; left: 5%;">
+
+                                <img src="img/dashboard1.png" alt="Health Score Dashboard"
+                                    class="hero-image float-animation-2 wow fadeInUp" data-wow-delay="0.8s"
+                                    style="width: 24%; top: 10%; left: 38%;">
+
+                                <img src="img/weekly insights.png" alt="Weekly Health Insights"
+                                    class="hero-image float-animation-3 wow fadeInUp" data-wow-delay="1.2s"
+                                    style="width: 22%; top: 80%; left: 15%;">
+
+                                <img src="img/streak.jpeg" alt="Active Days Tracking"
+                                    class="hero-image float-animation-1 wow fadeInUp" data-wow-delay="1.6s"
+                                    style="width: 23%; top: 18%; right: 5%;">
+
+                                <img src="img/mental health.jpeg" alt="Mental Health Resources"
+                                    class="hero-image float-animation-2 wow fadeInUp" data-wow-delay="2.0s"
+                                    style="width: 21%; top: 55%; right: 10%;">
+                            </div>
                         </div>
                     </div>
 
                     <!-- Hero content below the image -->
-                    <div class="row g-5">
-                        <div class="col-lg-6 text-center text-lg-start">
+                    <div class="row g-5 justify-content-center text-center">
+                        <div class="col-lg-8">
                             <h1 class="text-white mb-4 animated slideInDown">
-                                <div>Personalized Routines. <br> Smarter Habits. <br> Every Day.</div>
+                                <br>Personalized Routines. <br> Smarter Habits. <br> Every Day.
                             </h1>
-                            <p class="text-white pb-3 animated slideInDown">From AI-powered hyper-personalized health
-                                plans, build lasting habits to weekly goals tailored for your busy lifestyle —
+                            <p class="text-white pb-3 animated slideInDown">
+                                From AI-powered hyper-personalized health plans, build lasting habits to weekly goals
+                                tailored for your busy lifestyle —
                                 <strong>PeakRoutine</strong> helps you take control of your health naturally, whether
                                 it's for preventive or chronic care.
                             </p>
 
-                            <!-- Updated hero buttons with consistent spacing -->
                             <div class="hero-buttons">
                                 <a href="javascript:void(0)"
                                     onclick="document.getElementById('waitlist-section').scrollIntoView()"
                                     class="btn btn-light py-sm-3 px-4 px-sm-5 rounded-pill me-3 animated slideInRight">
-                                    <i class="fa fa-user-plus me-2"></i>Join the Waitlist Now</a>
+                                    <i class="fa fa-user-plus me-2"></i>Join the Waitlist Now
+                                </a>
                             </div>
 
-                            <!-- Star rating with member count -->
                             <div class="star-rating-container animated fadeIn mt-4">
                                 <div class="star-rating mb-2">
                                     <i class="fa fa-star"></i>
@@ -2067,39 +2197,7 @@
                                     <i class="fa fa-star"></i>
                                 </div>
                                 <p class="member-count">Join over 200+ early members</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 d-flex justify-content-center justify-content-lg-end wow fadeInUp"
-                            data-wow-delay="0">
-                            <div class="phone-wrapper">
-                                <div class="phone-container" id="phoneContainer">
-                                    <div class="phone-edge"></div>
-                                    <div class="phone">
-                                        <div class="phone-screen">
-                                            <img class="screenshot" id="phoneContainer-screenshot1" src="img/login1.jpg"
-                                                alt="Build healthier happier lifestyle">
-                                            <img class="screenshot hidden" id="phoneContainer-screenshot2"
-                                                src="img/login2.jpg" alt="Physical and Mental Health Struggles">
-                                            <img class="screenshot hidden" id="phoneContainer-screenshot3"
-                                                src="img/login3.jpg" alt="Naturally Boost Energy Levels">
-                                            <img class="screenshot hidden" id="phoneContainer-screenshot4"
-                                                src="img/login4.jpg" alt="Creating Energy Reserves for boosting energy">
-                                            <img class="screenshot hidden" id="phoneContainer-screenshot5"
-                                                src="img/login5.jpg" alt="Real Time Health and Growth Analytics">
-                                        </div>
-                                        <div class="phone-notch"></div>
-                                        <div class="button-container"></div>
-                                    </div>
-                                    <div class="shadow"></div>
-                                </div>
-
-                                <div class="nav-dots">
-                                    <div class="nav-dot active" onclick="showScreen('phoneContainer', 1)"></div>
-                                    <div class="nav-dot" onclick="showScreen('phoneContainer', 2)"></div>
-                                    <div class="nav-dot" onclick="showScreen('phoneContainer', 3)"></div>
-                                    <div class="nav-dot" onclick="showScreen('phoneContainer', 4)"></div>
-                                    <div class="nav-dot" onclick="showScreen('phoneContainer', 5)"></div>
-                                </div>
+                                <br>
                             </div>
                         </div>
                     </div>
@@ -2127,125 +2225,89 @@
             <div class="container py-5 px-lg-5">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="text-primary-gradient fw-medium">Reach Your Full Potential</h5>
-                    <h1 class="mb-5">Take control of your health with personalized, habit-building tools.</h1>
+                    <h1 class="mb-5">What is PeakRoutine?</h1>
+                    <p class="mb-5">
+                        PeakRoutine is an AI-powered health platform that helps you form sustainable habits across
+                        physical activity, sleep, mood, sunlight, and energy tracking. With personalized routines,
+                        bite-sized weekly goals, and mental wellness tools — it's designed to adapt to your lifestyle
+                        and support your long-term well-being, naturally.
+                    </p>
                 </div>
                 <div class="row g-4">
+
+                    <!-- Health Tracking -->
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="feature-item bg-light rounded p-4 h-100">
-                            <div class="d-inline-flex align-items-center justify-content-center bg-primary-gradient rounded-circle mb-4"
-                                style="width: 60px; height: 60px;">
-                                <i class="fa fa-moon text-white fs-4"></i>
-                            </div>
-                            <h5 class="mb-3">Sleep Tracking & Insights</h5>
-                            <p class="m-0">Monitor your sleep pattern and receive tips.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="feature-item bg-light rounded p-4 h-100">
-                            <div class="d-inline-flex align-items-center justify-content-center bg-secondary-gradient rounded-circle mb-4"
-                                style="width: 60px; height: 60px;">
-                                <i class="fa fa-smile text-white fs-4"></i>
-                            </div>
-                            <h5 class="mb-3">Mood Tracking</h5>
-                            <p class="m-0">Record and visualize your emotional states to identify patterns over
-                                time.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="feature-item bg-light rounded p-4 h-100">
-                            <div class="d-inline-flex align-items-center justify-content-center bg-secondary-gradient rounded-circle mb-4"
-                                style="width: 60px; height: 60px;">
-                                <i class="fa fa-book text-white fs-4"></i>
-                            </div>
-                            <h5 class="mb-3">Journaling</h5>
-                            <p class="m-0">Document thoughts, experiences, and triggers affecting your well-being.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="feature-item bg-light rounded p-4 h-100">
                             <div class="d-inline-flex align-items-center justify-content-center bg-primary-gradient rounded-circle mb-4"
                                 style="width: 60px; height: 60px;">
                                 <i class="fa fa-heartbeat text-white fs-4"></i>
                             </div>
-                            <h5 class="mb-3">Stress Relief</h5>
-                            <p class="m-0">Manage your stress with guided techniques.</p>
+                            <h5 class="mb-3">Physical & Mental Health Tracking</h5>
+                            <p class="m-0">Monitor physical activity, sleep, mood, sunlight exposure, and stress levels
+                                to understand your daily wellness.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+
+                    <!-- Nutrition -->
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="feature-item bg-light rounded p-4 h-100">
                             <div class="d-inline-flex align-items-center justify-content-center bg-secondary-gradient rounded-circle mb-4"
                                 style="width: 60px; height: 60px;">
                                 <i class="fa fa-apple-alt text-white fs-4"></i>
                             </div>
-                            <h5 class="mb-3">Nutrition Tracking</h5>
-                            <p class="m-0">Stay on top of your diet with reminders for healthy eating.</p>
+                            <h5 class="mb-3">Nutrition Guidance</h5>
+                            <p class="m-0">Track meals, stay mindful of macros, and receive healthy eating prompts.</p>
                         </div>
                     </div>
+
+                    <!-- AI Plan -->
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="feature-item bg-light rounded p-4 h-100">
                             <div class="d-inline-flex align-items-center justify-content-center bg-primary-gradient rounded-circle mb-4"
                                 style="width: 60px; height: 60px;">
-                                <i class="fa fa-brain text-white fs-4"></i>
+                                <i class="fa fa-robot text-white fs-4"></i>
                             </div>
-                            <h5 class="mb-3">AI Analysis</h5>
-                            <p class="m-0">Analyze your habits with AI for tailored recommendations.</p>
+                            <h5 class="mb-3">AI-Powered Personalized Plans</h5>
+                            <p class="m-0">Smart routines tailored to your health patterns, lifestyle, and goals.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="feature-item bg-light rounded p-4 h-100">
-                            <div class="d-inline-flex align-items-center justify-content-center bg-secondary-gradient rounded-circle mb-4"
-                                style="width: 60px; height: 60px;">
-                                <i class="fa fa-sun text-white fs-4"></i>
+                    <!-- Wrap bottom 2 cards in a centered row -->
+                    <div class="d-flex justify-content-center flex-wrap gap-4">
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="feature-item bg-light rounded p-4 h-100">
+                                <div class="d-inline-flex align-items-center justify-content-center bg-secondary-gradient rounded-circle mb-4"
+                                    style="width: 60px; height: 60px;">
+                                    <i class="fa fa-check-circle text-white fs-4"></i>
+                                </div>
+                                <h5 class="mb-3">Habit Tracking</h5>
+                                <p class="m-0">Build small, consistent habits with daily check-ins and behavior nudges.
+                                </p>
                             </div>
-                            <h5 class="mb-3">Daily Sunlight Exposure</h5>
-                            <p class="m-0">Monitor natural light exposure to improve your circadian rhythm.</p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                            <div class="feature-item bg-light rounded p-4 h-100">
+                                <div class="d-inline-flex align-items-center justify-content-center bg-primary-gradient rounded-circle mb-4"
+                                    style="width: 60px; height: 60px;">
+                                    <i class="fa fa-bullseye text-white fs-4"></i>
+                                </div>
+                                <h5 class="mb-3">Weekly Goals</h5>
+                                <p class="m-0">Stay consistent with personalized, manageable targets designed to fit
+                                    your busy lifestyle and celebrate weekly wins.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="feature-item bg-light rounded p-4 h-100">
-                            <div class="d-inline-flex align-items-center justify-content-center bg-secondary-gradient rounded-circle mb-4"
-                                style="width: 60px; height: 60px;">
-                                <i class="fa fa-chart-line text-white fs-4"></i>
-                            </div>
-                            <h5 class="mb-3">CGM Integration</h5>
-                            <p class="m-0">Connect continuous glucose monitoring data to see how diet affects your
-                                metabolism.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="feature-item bg-light rounded p-4 h-100">
-                            <div class="d-inline-flex align-items-center justify-content-center bg-secondary-gradient rounded-circle mb-4"
-                                style="width: 60px; height: 60px;">
-                                <i class="fa fa-trophy text-white fs-4"></i>
-                            </div>
-                            <h5 class="mb-3">Gamification</h5>
-                            <p class="m-0">Earn rewards and track your progress as you develop healthy habits and
-                                achieve your
-                                wellness goals.</p>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
         <!-- Features End -->
 
-        <div class="container-xxl py-5">
+
+        <!-- <div class="container-xxl py-5">
             <div class="container py-5 px-lg-5">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
                         <h1 class="mb-4">User Friendly Interface And Very Easy To Use Fitness App</h1>
-                        <!-- <p class="mb-4">
-              Experience a fitness app designed with simplicity and ease in mind. Our intuitive interface ensures that
-              anyone can navigate and use the app seamlessly, whether you're a beginner or a fitness enthusiast. Track
-              your progress, set goals, and access personalized insights without any hassle.
-            </p> -->
-
-                        <!-- <p class="d-flex align-items-start">
-              <i class="fa fa-check text-primary-gradient me-3 mt-1"></i>
-              <span><strong>Simple and Intuitive Design</strong>: Navigate the app effortlessly with a clean and
-                user-friendly layout.</span>
-            </p> -->
                         <p class="d-flex align-items-start">
                             <i class="fa fa-check text-primary-gradient me-3 mt-1"></i>
                             <span><strong>Quick Goal Setting</strong>: Set and track fitness goals in just a few
@@ -2269,20 +2331,6 @@
                                 guidance based on your
                                 activity patterns, preferences, and health metrics.</span>
                         </p>
-                        <!-- <p class="d-flex align-items-start">
-              <i class="fa fa-check text-primary-gradient me-3 mt-1"></i>
-              <span><strong>Easy Progress Tracking</strong>: Monitor your achievements with clear, visual progress
-                reports.</span>
-            </p>
-            <p class="d-flex align-items-start">
-              <i class="fa fa-check text-primary-gradient me-3 mt-1"></i>
-              <span><strong>Build sustainable habits</strong>: Create routines that fit your body and lifestyle.</span>
-            </p>
-            <p class="d-flex align-items-start">
-              <i class="fa fa-check text-primary-gradient me-3 mt-1"></i>
-              <span><strong>Accessible for Everyone</strong>: Designed to suit beginners and fitness enthusiasts
-                alike.</span>
-            </p> -->
 
                         <a href="javascript:void(0)" onclick="document.getElementById('feature').scrollIntoView()"
                             class="btn btn-primary-gradient py-sm-3 px-4 px-sm-5 rounded-pill mt-3">Learn More</a>
@@ -2323,7 +2371,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Screenshot End -->
 
@@ -2686,8 +2734,8 @@
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <h4 class="text-white mb-4">Quick Links</h4>
-                            <a class="btn btn-link" href="javascript:void(0)"
-                                onclick="document.getElementById('about').scrollIntoView()">About Us</a>
+                            <!-- <a class="btn btn-link" href="javascript:void(0)"
+                                onclick="document.getElementById('about').scrollIntoView()">About Us</a> -->
                             <a class="btn btn-link" href="javascript:void(0)"
                                 onclick="document.getElementById('contact').scrollIntoView()">Contact Us</a>
                             <a href="https://peak-routine.productroad.com/roadmap/peak-routine-ios-app"
@@ -2940,6 +2988,43 @@
                     }
                 });
             });
+        });
+
+        // Add this to your existing JavaScript (preferably in main.js or at the end of your HTML before </body>)
+        document.addEventListener('DOMContentLoaded', function () {
+            // Custom function to handle staggered image appearance
+            function staggeredImageAppearance() {
+                const heroImages = document.querySelectorAll('.hero-container .hero-image');
+
+                heroImages.forEach((img, index) => {
+                    const delay = parseFloat(img.getAttribute('data-wow-delay')) || (index * 1.3 + 0.2);
+
+                    // Set initial state
+                    img.style.opacity = '0';
+                    img.style.transform = 'translateY(20px)';
+                    img.style.transition = 'opacity 1s ease, transform 1s ease';
+
+                    // Delayed appearance
+                    setTimeout(() => {
+                        img.style.opacity = '1';
+                        img.style.transform = 'translateY(0)';
+
+                        // Start floating animation after appearance
+                        setTimeout(() => {
+                            if (img.classList.contains('float-animation-1')) {
+                                img.style.animation = 'float1 6s ease-in-out infinite';
+                            } else if (img.classList.contains('float-animation-2')) {
+                                img.style.animation = 'float2 7s ease-in-out infinite';
+                            } else if (img.classList.contains('float-animation-3')) {
+                                img.style.animation = 'float3 8s ease-in-out infinite';
+                            }
+                        }, 1000);
+                    }, delay * 1000);
+                });
+            }
+
+            // Run the staggered appearance
+            staggeredImageAppearance();
         });
 
         // Variables to track current screen and total screens
