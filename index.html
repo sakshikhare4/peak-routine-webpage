@@ -1371,6 +1371,14 @@
             position: relative;
             padding-top: 20px;
         }
+        .apple-id-container {
+    transition: opacity 0.3s ease;
+}
+
+.waitlist-container .form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
 
         .waitlist-counter:before {
             content: "";
@@ -2521,15 +2529,31 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="waitlist-updates"
-                                                    checked>
-                                                <label class="form-check-label" for="waitlist-updates">
-                                                    I'd like to receive product updates and news via email
-                                                </label>
-                                            </div>
-                                        </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="apple-id-same-as-email" checked>
+                                    <label class="form-check-label" for="apple-id-same-as-email">
+                                        Is your Apple ID the same as your Email ID?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="apple-id-container" style="display: none;">
+                                <div class="form-group">
+                                    <label for="waitlist-apple-id">Your Apple ID</label>
+                                    <input type="email" class="form-control" id="waitlist-apple-id"
+                                        placeholder="Enter your Apple ID">
+                                    <small class="form-text text-muted">We'll use this to provide iOS app access</small>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="waitlist-updates"
+                                        checked>
+                                    <label class="form-check-label" for="waitlist-updates">
+                                        I'd like to receive product updates and news via email
+                                    </label>
+                                </div>
+                            </div>
+                                       
                                         <div class="col-12 text-center mt-4">
                                             <button type="submit"
                                                 class="btn btn-primary-gradient py-3 px-5 rounded-pill">
@@ -2744,6 +2768,30 @@
                 submitForm();
             }
         }
+
+        // Apple ID toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const appleIdSameAsEmailToggle = document.getElementById('apple-id-same-as-email');
+    const appleIdInput = document.getElementById('waitlist-apple-id');
+    const appleIdContainer = document.getElementById('apple-id-container');
+
+    // Toggle Apple ID field based on checkbox state
+    appleIdSameAsEmailToggle.addEventListener('change', function() {
+        if (this.checked) {
+            // Hide Apple ID field (using email as Apple ID)
+            appleIdContainer.style.display = 'none';
+            appleIdInput.value = ''; // Clear the field when hidden
+        } else {
+            // Show Apple ID field (user wants to enter different Apple ID)
+            appleIdContainer.style.display = 'block';
+        }
+    });
+
+    // Initialize the state (checkbox checked by default, field hidden)
+    if (appleIdSameAsEmailToggle.checked) {
+        appleIdContainer.style.display = 'none';
+    }
+});
 
         async function submitForm() {
             const form = document.getElementById('contactForm');
@@ -3111,12 +3159,28 @@
             const email = document.getElementById('waitlist-email').value.trim();
             const reasonCode = document.getElementById('waitlist-reason').value;
             const subscribeUpdate = document.getElementById('waitlist-updates').checked;
+            const appleIdSameAsEmail = document.getElementById('apple-id-same-as-email').checked;
+            const customAppleId = document.getElementById('waitlist-apple-id').value.trim();
 
+             // Determine the Apple ID to use
+    let appleId;
+    if (appleIdSameAsEmail) {
+        appleId = email; // Use email as Apple ID
+    } else {
+        appleId = customAppleId; // Use custom Apple ID
+        // Validate that custom Apple ID is provided when checkbox is unchecked
+        if (!appleId) {
+            alert('Please enter your Apple ID or check "Use my email as Apple ID".');
+            return;
+        }
+    }
             const waitlistData = {
                 name,
                 email,
                 reasonCode: reasonCode || "waitlist",
-                subscribeUpdate
+                subscribeUpdate,
+                appleIdSameAsEmail,
+                customAppleId
             };
 
             // Show loading state
